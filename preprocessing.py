@@ -1,9 +1,12 @@
 import argparse
 import os
 import warnings
-
+import boto3
 import pandas as pd
 import numpy as np
+import sagemaker
+from sagemaker.sklearn.processing import SKLearnProcessor
+from sagemaker import get_execution_role
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler, OneHotEncoder, LabelBinarizer, KBinsDiscretizer
 from sklearn.preprocessing import PolynomialFeatures
@@ -38,6 +41,11 @@ def print_shape(df):
 
 
 if __name__ == "__main__":
+    region = boto3.session.Session().region_name
+    role = get_execution_role()
+    input_data = "s3://sagemaker-sample-data-{}/processing/census/census-income.csv".format(region)
+    df = pd.read_csv(input_data, nrows=10)
+    df.head(n=10)
     parser = argparse.ArgumentParser()
     parser.add_argument("--train-test-split-ratio", type=float, default=0.3)
     args, _ = parser.parse_known_args()
