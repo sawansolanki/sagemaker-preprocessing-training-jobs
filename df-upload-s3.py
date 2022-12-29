@@ -16,7 +16,7 @@ response = client.put_object(
     Body='',
     Key=(dpath))
 
-path = "s3://bkt-slp-psl/" + datestring +"/file.csv"
+path = "s3://bkt-slp-psl/opt/ml/processing/train/out-data-" + datestring +"/file.csv"
 
 df = pd.read_csv('bank-additional/bank-additional-full.csv')
 
