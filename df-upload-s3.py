@@ -2,17 +2,18 @@ import pandas as pd
 import boto3
 import datetime
 
-bucket_name = "bkt-slp-slp"
+bucket_name = "bkt-slp-psl"
 
 datestring = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
 client = boto3.client('s3')
 
+dpath = 'opt/ml/processing/train/out-data-' + datestring + '/'
+
 response = client.put_object(
-    Bucket='put-data-slp',
+    Bucket='bkt-slp-psl',
     Body='',
-    Key=('opt/ml/processing/train/out-data-' + datestring + '/')
-)
+    Key=(dpath))
 
 path = "s3://bkt-slp-psl/" + datestring +"/file.csv"
 
