@@ -13,9 +13,10 @@ from sklearn.compose import make_column_transformer
 from sklearn.exceptions import DataConversionWarning
 warnings.filterwarnings(action='ignore', category=DataConversionWarning)
 
-Bucket='put-data-slp'
 
 if __name__=='__main__':
+    
+    Bucket='put-data-slp'
     parser = argparse.ArgumentParser()
     parser.add_argument('--train-test-split-ratio', type=float, default=0.3)
     args, _ = parser.parse_known_args()
