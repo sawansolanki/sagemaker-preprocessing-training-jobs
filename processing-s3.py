@@ -13,6 +13,8 @@ from sklearn.compose import make_column_transformer
 from sklearn.exceptions import DataConversionWarning
 warnings.filterwarnings(action='ignore', category=DataConversionWarning)
 
+Bucket='put-data-slp'
+
 if __name__=='__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--train-test-split-ratio', type=float, default=0.3)
@@ -79,11 +81,11 @@ if __name__=='__main__':
 
 
     
-    train_features_output_path = 's3://opt/ml/processing/train/out-data-' + datestring +  '/train_features.csv'
-    train_labels_output_path = 's3://opt/ml/processing/train/out-data'+ datestring + '/train_labels.csv'
+    train_features_output_path = 's3://' + Bucket + '/opt/ml/processing/train/out-data-' + datestring +  '/train_features.csv'
+    train_labels_output_path = 's3://' + Bucket + '/opt/ml/processing/train/out-data'+ datestring + '/train_labels.csv'
     
-    test_features_output_path = 's3://opt/ml/processing/test/out-data-' + datestring + '/test_features.csv'
-    test_labels_output_path = 's3://opt/ml/processing/test/out-data-' + datestring + '/test_labels.csv'
+    test_features_output_path = 's3://' + Bucket + '/opt/ml/processing/test/out-data-' + datestring + '/test_features.csv'
+    test_labels_output_path = 's3://' + Bucket + '/opt/ml/processing/test/out-data-' + datestring + '/test_labels.csv'
     
     print('Saving training features to {}'.format(train_features_output_path))
     pd.DataFrame(train_features).to_csv(train_features_output_path, header=False, index=False)
