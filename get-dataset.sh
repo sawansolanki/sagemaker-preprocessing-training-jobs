@@ -8,8 +8,8 @@ pip3 install --upgrade setuptools wheel
 pip3 install --upgrade setuptools wheel
 python3 -m pip install s3fs --user
 pip3 install boto3
-#python3 -m pip install boto3 pandas s3fs --user
-pip3 -q install sagemaker --upgrade
+python3 -m pip install boto3 pandas s3fs sagemaker --user
+#pip3 -q install sagemaker --upgrade
 sudo apt-get -y install unzip
 pip3 install scikit-learn
 
