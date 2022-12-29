@@ -61,13 +61,13 @@ if __name__=='__main__':
     response = client.put_object(
         Bucket='put-data-slp',
         Body='',
-        Key=('opt/ml/processing/train/out-data-' + datestring)
+        Key=('opt/ml/processing/train/out-data-' + datestring + '/')
         )
 
     response1 = client.put_object(
         Bucket='put-data-slp',
         Body='',
-        Key=('opt/ml/processing/test/out-data-' + datestring)
+        Key=('opt/ml/processing/test/out-data-' + datestring + '/')
         )
         
     print('Running preprocessing and feature engineering transformations')
@@ -79,11 +79,11 @@ if __name__=='__main__':
 
 
     
-    train_features_output_path = 's3://put-data-slp/opt/ml/processing/train/out-data-' + datestring +  '/train_features.csv'
-    train_labels_output_path = 's3://put-data-slp/opt/ml/processing/train/out-data'+ datestring + '/train_labels.csv'
+    train_features_output_path = 's3://opt/ml/processing/train/out-data-' + datestring +  '/train_features.csv'
+    train_labels_output_path = 's3://opt/ml/processing/train/out-data'+ datestring + '/train_labels.csv'
     
-    test_features_output_path = 's3://put-data-slp/opt/ml/processing/test/out-data-' + datestring + '/test_features.csv'
-    test_labels_output_path = 's3://put-data-slp/opt/ml/processing/test/out-data-' + datestring + '/test_labels.csv'
+    test_features_output_path = 's3://opt/ml/processing/test/out-data-' + datestring + '/test_features.csv'
+    test_labels_output_path = 's3://opt/ml/processing/test/out-data-' + datestring + '/test_labels.csv'
     
     print('Saving training features to {}'.format(train_features_output_path))
     pd.DataFrame(train_features).to_csv(train_features_output_path, header=False, index=False)
