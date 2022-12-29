@@ -4,9 +4,9 @@ sudo apt-get update
 sudo apt-get install python3
 sudo apt install python3-pip
 python3 -m pip install boto3 pandas s3fs
-pip -q install sagemaker --upgrade
+pip3 -q install sagemaker --upgrade
 sudo apt-get -y install unzip
-pip install scikit-learn
+pip3 install scikit-learn
 
 wget -N https://sagemaker-sample-data-us-west-2.s3-us-west-2.amazonaws.com/autopilot/direct_marketing/bank-additional.zip
 unzip -o bank-additional.zip
