@@ -3,6 +3,7 @@
 sudo apt-get update
 sudo apt-get install python3
 sudo apt install python3-pip
+python3 -m pip install boto3 pandas s3fs
 pip -q install sagemaker --upgrade
 sudo apt-get -y install unzip
 pip install scikit-learn
