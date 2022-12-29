@@ -1,8 +1,8 @@
 #! /bin/bash
 
 sudo apt-get update
-echo y | sudo apt-get install pip
 sudo apt-get install python3
+sudo apt install python3-pip
 pip -q install sagemaker --upgrade
 sudo apt-get -y install unzip
 pip install scikit-learn
