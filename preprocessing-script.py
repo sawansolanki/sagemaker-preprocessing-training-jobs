@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 from sagemaker.sklearn.processing import SKLearnProcessor
 
 from sagemaker.processing import ProcessingInput, ProcessingOutput
