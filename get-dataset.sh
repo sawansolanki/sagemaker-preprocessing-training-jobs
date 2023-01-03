@@ -21,6 +21,9 @@ sudo apt-get install less
 unzip awscliv2.zip
 sudo ./aws/install
 
+sudo apt-get install -y docker.io
+sudo service docker start
+
 sudo mkdir -p /opt/ml/processing/train
 sudo mkdir -p /opt/ml/processing/test
 sudo mkdir -p /opt/ml/processing/input
