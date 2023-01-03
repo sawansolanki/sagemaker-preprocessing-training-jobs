@@ -21,8 +21,10 @@ sudo apt-get install less
 unzip awscliv2.zip
 sudo ./aws/install
 
-mkdir -p /opt/ml/processing/train
-mkdir -p /opt/ml/processing/test
-mkdir -p /opt/ml/processing/input
+sudo mkdir -p /opt/ml/processing/train
+sudo mkdir -p /opt/ml/processing/test
+sudo mkdir -p /opt/ml/processing/input
+sudo mkdir -p /opt/ml/processing/input/code
 
+cp preprocessing.py /opt/ml/processing/input/code/
 cp bank-additional/bank-additional-full.csv /opt/ml/processing/input/
