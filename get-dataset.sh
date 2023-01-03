@@ -13,8 +13,8 @@ python3 -m pip install boto3 pandas s3fs sagemaker --user
 sudo apt-get -y install unzip
 
 pip3 install scikit-learn
-wget -N https://sagemaker-sample-data-us-west-2.s3-us-west-2.amazonaws.com/autopilot/direct_marketing/bank-additional.zip
-unzip -o bank-additional.zip
+pip3 install sklearn
+pip3 install argparse
 
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
 sudo apt-get install less
@@ -27,4 +27,8 @@ sudo mkdir -p /opt/ml/processing/input
 sudo mkdir -p /opt/ml/processing/input/code
 
 cp preprocessing.py /opt/ml/processing/input/code/
-cp bank-additional/bank-additional-full.csv /opt/ml/processing/input/
+
+pip3 install awscli --upgrade --user 
+pip3 install --upgrade boto3
+
+
