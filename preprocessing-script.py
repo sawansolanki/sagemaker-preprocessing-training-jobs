@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 import boto3
 import sagemaker
 from sagemaker import get_execution_role
