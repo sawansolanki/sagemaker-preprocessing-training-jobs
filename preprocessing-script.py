@@ -10,7 +10,8 @@ input_data = "s3://sagemaker-sample-data-{}/processing/census/census-income.csv"
 
 def run_prepros():
 #creating processing job instance
-    role = get_execution_role()
+    #role = get_execution_role()
+    role='arn:aws:iam::256537223841:role/service-role/AmazonSageMaker-ExecutionRole-20221027T104692'
     sklearn_processor = SKLearnProcessor(
         framework_version="0.20.0", role=role, instance_type="ml.c4.2xlarge", instance_count=1
     )
