@@ -1,8 +1,10 @@
+#!/usr/bin/python3
 from sagemaker.sklearn.estimator import SKLearn
 import sagemaker
 from sagemaker import get_execution_role
 
-role = get_execution_role()
+#role = get_execution_role()
+role='arn:aws:iam::256537223841:role/service-role/AmazonSageMaker-ExecutionRole-20221027T104692'
 
 #output has been taken from "#running the processing job", this where it is defined
 output = {'OutputName': 'test_data',
