@@ -1,7 +1,15 @@
-version: '3'
-
+version: "3.9"
 services:
-  my-job-sagemeker:
-    image: preprocess:latest
+  preprocessing:
+    build: .
+    image: pro-train
     volumes:
       - ~/.aws/:/root/.aws:ro
+    command: preprocessing-script.py
+  training:
+    depends_on:
+      - preprocessing
+    image: pro-train
+    volumes:
+      - ~/.aws/:/root/.aws:ro
+    command: training-script.py
