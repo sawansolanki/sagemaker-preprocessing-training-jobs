@@ -18,6 +18,8 @@ preprocessed_test_data = output["S3Output"]["S3Uri"]
 
 
 def run_training():    
+ 
+    sagemaker.Session(boto3.Session(region_name='us-east-1'))
 
     sklearn = SKLearn(
         entry_point="train.py", framework_version="0.20.0", instance_type="ml.c4.2xlarge", role=role
