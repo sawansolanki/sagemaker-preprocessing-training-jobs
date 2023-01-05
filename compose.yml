@@ -8,7 +8,8 @@ services:
     command: preprocessing-script.py
   training:
     depends_on:
-      - preprocessing
+      preprocessing:
+        condition: service_completed_successfully
     image: pro-train
     volumes:
       - ~/.aws/:/root/.aws:ro
