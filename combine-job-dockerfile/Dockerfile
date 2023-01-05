@@ -18,4 +18,4 @@ RUN /opt/ml/code/training-script.py
 WORKDIR /opt/ml/code
 VOLUME ~/.aws/:/root/.aws:ro
 
-CMD ["python3","preprocessing-script.py"]
+ENTRYPOINT ["python3"]
