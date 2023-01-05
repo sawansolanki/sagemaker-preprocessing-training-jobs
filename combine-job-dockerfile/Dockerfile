@@ -10,7 +10,7 @@ COPY training.py /opt/ml/code/training.py
 COPY training-script.py /opt/ml/code/training-script.py
 
 RUN chmod 755 /opt/ml/code/dependency.sh
-RUN ./dependency.sh
+RUN /opt/ml/code/dependency.sh
 RUN chmod 755 /opt/ml/code/*.py
 
 WORKDIR /opt/ml/code
