@@ -1,0 +1,8 @@
+version: "3.9"
+services:
+  sawan:
+    build: .
+    command: aa.py
+  solanki:
+    build: .
+    command: bb.py
