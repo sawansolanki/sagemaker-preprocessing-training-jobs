@@ -12,20 +12,6 @@ if __name__ == "__main__":
     X_train = pd.read_csv(train_features_data, header=None)
     y_train = pd.read_csv(train_labels_data, header=None)
     
-    print("Loading test input data")
-    test_features_data = os.path.join("/opt/ml/processing/test", "test_features.csv")
-    test_labels_data = os.path.join("/opt/ml/processing/test", "test_labels.csv")
-    
-    X_test = pd.read_csv(test_features_data, header=None)
-    y_test = pd.read_csv(test_labels_data, header=None)
-    predictions = model.predict(X_test)
-    
-    print("Creating classification evaluation report")
-    report_dict = classification_report(y_test, predictions, output_dict=True)
-    report_dict["accuracy"] = accuracy_score(y_test, predictions)
-    report_dict["roc_auc"] = roc_auc_score(y_test, predictions)
-
-    print("Classification report:\n{}".format(report_dict))
 
     model = LogisticRegression(class_weight="balanced", solver="lbfgs")
     print("Training LR model")
