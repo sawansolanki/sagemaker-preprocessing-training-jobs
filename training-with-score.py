@@ -22,8 +22,8 @@ if __name__ == "__main__":
     
     print("Loading test input data")
     
-    test_features_data = os.path.join("/opt/ml/processing/test", "test_features.csv")
-    test_labels_data = os.path.join("/opt/ml/processing/test", "test_labels.csv")
+    test_features_data = os.path.join("/opt/ml/input/data/test", "test_features.csv")
+    test_labels_data = os.path.join("/opt/ml/input/data/test", "test_labels.csv")
     X_test = pd.read_csv(test_features_data, header=None)
     y_test = pd.read_csv(test_labels_data, header=None)
     predictions = model.predict(X_test)
