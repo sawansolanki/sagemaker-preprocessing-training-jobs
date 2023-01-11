@@ -23,27 +23,9 @@ jobs:
     - name: Log in to Amazon ECR
       id: login-ecr
       uses: aws-actions/amazon-ecr-login@v1
-
-        
-  submit_training_job:
-    needs: [build_image_push_to_ECR]
-    runs-on: [ubuntu-latest]
-    container: docker://dvcorg/cml-py3:latest
-    steps:
-    - uses: actions/checkout@v2
-    - name: Fire SageMaker
-      id: sm_train
-      env:
-        #repo_token: ${{ secrets.GITHUB_TOKEN }}
-        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
-        AWS_REGION: ${{secrets.AWS_REGION}}
-#         BUCKET_NAME: ${{ secrets.BUCKET_NAME }}
-#         PREFIX: ${{ secrets.PREFIX }}
-#         IAM_ROLE_NAME: ${{ secrets.IAM_ROLE_NAME }}
-        GITHUB_SHA: ${{ github.sha }}
-      run: |
+      
+    
+    - run: |
         #pip install --no-cache-dir --upgrade awscli pandas boto3 sagemaker requests fsspec s3fs tabulate
         chmod 755 training-script.py
         chmod 755 sudo-dependency.sh
@@ -52,3 +34,32 @@ jobs:
         python3 training-script.py
         #cat details.txt >> report.md
         #cml-send-comment report.md 
+
+        
+#   submit_training_job:
+#     needs: [build_image_push_to_ECR]
+#     runs-on: [ubuntu-latest]
+#     container: docker://dvcorg/cml-py3:latest
+#     steps:
+#     - uses: actions/checkout@v2
+#     - name: Fire SageMaker
+#       id: sm_train
+#       env:
+#         #repo_token: ${{ secrets.GITHUB_TOKEN }}
+#         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+#         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+#         AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
+#         AWS_REGION: ${{secrets.AWS_REGION}}
+# #         BUCKET_NAME: ${{ secrets.BUCKET_NAME }}
+# #         PREFIX: ${{ secrets.PREFIX }}
+# #         IAM_ROLE_NAME: ${{ secrets.IAM_ROLE_NAME }}
+#         GITHUB_SHA: ${{ github.sha }}
+#       run: |
+#         #pip install --no-cache-dir --upgrade awscli pandas boto3 sagemaker requests fsspec s3fs tabulate
+#         chmod 755 training-script.py
+#         chmod 755 sudo-dependency.sh
+        
+#         ./sudo-dependency.sh
+#         python3 training-script.py
+#         #cat details.txt >> report.md
+#         #cml-send-comment report.md 
