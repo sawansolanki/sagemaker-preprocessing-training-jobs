@@ -16,10 +16,10 @@ pip3 install scikit-learn
 #pip3 install sklearn
 pip3 install argparse
 
-sudo curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-sudo apt-get install less
-sudo unzip awscliv2.zip
-sudo ./aws/install
+# sudo curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+# sudo apt-get install less
+# sudo unzip awscliv2.zip
+# sudo ./aws/install
 
 sudo apt-get install -y docker.io
 sudo service docker start
