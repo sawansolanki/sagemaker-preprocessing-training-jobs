@@ -1,0 +1,22 @@
+name: ec2-commands
+on: workflow_dispatch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Set up AWS credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: us-east-1
+    - name: Run command on EC2 instance
+      uses: aws-actions/ec2-run-command@v1
+      with:
+        instance-ids: i-03db987675a3cf998
+        commands: |
+          touch aaa.txt
+          echo "Hello, World!" >> aaa.txt
