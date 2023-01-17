@@ -7,7 +7,7 @@ env:
 
 jobs:
         
-  submit_training_job:
+  prep_training_job:
     runs-on: [ubuntu-latest]
     container: docker://dvcorg/cml-py3:latest
     steps:
