@@ -67,7 +67,7 @@ def run_training():
     describe_endpoint_response = sm_client.describe_endpoint(EndpointName=endpoint_name)
 
     while describe_endpoint_response["EndpointStatus"] == "Creating":
-        describe_endpoint_response = client.describe_endpoint(EndpointName=endpoint_name)
+        describe_endpoint_response = sm_client.describe_endpoint(EndpointName=endpoint_name)
         print(describe_endpoint_response["EndpointStatus"])
         time.sleep(15)
 
