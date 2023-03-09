@@ -9,7 +9,7 @@ role='arn:aws:iam::256537223841:role/service-role/AmazonSageMaker-ExecutionRole-
 
 #output has been taken from "#running the processing job", this where it is defined
 output = {'OutputName': 'test_data',
- 'S3Output': {'S3Uri': 's3://sagemaker-us-east-1-256537223841/sagemaker-scikit-learn-2023-01-04-06-55-53-409/output/train_data',
+ 'S3Output': {'S3Uri': 's3://sagemaker-us-east-1-256537223841/sagemaker-scikit-learn-2023-03-09-06-22-54-085/output/train_data',
   'LocalPath': '/opt/ml/processing/train',
   'S3UploadMode': 'EndOfJob'},
  'AppManaged': False}
