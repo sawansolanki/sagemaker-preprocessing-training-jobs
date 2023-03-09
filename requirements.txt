@@ -1,6 +1,3 @@
-argparse
-warnings
-os
 boto3
 pandas
 numpy==1.22.0
