@@ -35,43 +35,57 @@ def run_training():
         "output/model.tar.gz",
     )
     
+    #endpoint_name = 'logistic-reg-endpoint'
+    endpoint_name = 'logistic-regression-epc' + strftime("%Y-%m-%d-%H-%M-%S", gmtime())
+    instance_type = 'ml.t2.medium'
+
+    predictor = sklearn.deploy(
+        initial_instance_count=1,
+        instance_type=instance_type,
+        endpoint_name=endpoint_name
+    )
+    
+    
+    
     #adding the endpoint part 
     #endpoint config
-    sm_client = boto3.client("sagemaker")
-    endpoint_config_name = 'xgboost-regression-epc' + strftime("%Y-%m-%d-%H-%M-%S", gmtime())
-    instance_type = "ml.c4.2xlarge"
-    print(endpoint_config_name)
-    create_endpoint_config_response = sm_client.create_endpoint_config(
-        EndpointConfigName = endpoint_config_name,
-        ProductionVariants=[{
-            'InstanceType': instance_type,
-            'InitialInstanceCount': 1,
-            'InitialVariantWeight': 1,
-            'ModelName': model,
-            'VariantName': 'AllTraffic'}])
-    print("Endpoint Configuration Arn: " + create_endpoint_config_response["EndpointConfigArn"])
+#     sm_client = boto3.client("sagemaker")
+#     endpoint_config_name = 'xgboost-regression-epc' + strftime("%Y-%m-%d-%H-%M-%S", gmtime())
+#     instance_type = "ml.c4.2xlarge"
+#     print(endpoint_config_name)
+#     create_endpoint_config_response = sm_client.create_endpoint_config(
+#         EndpointConfigName = endpoint_config_name,
+#         ProductionVariants=[{
+#             'InstanceType': instance_type,
+#             'InitialInstanceCount': 1,
+#             'InitialVariantWeight': 1,
+#             'ModelName': model,
+#             'VariantName': 'AllTraffic'}])
+#     print("Endpoint Configuration Arn: " + create_endpoint_config_response["EndpointConfigArn"])
     
-    #endpoint creation
+#     #endpoint creation
     
-    endpoint_name = 'xgboost-realtime-ep' + strftime("%Y-%m-%d-%H-%M-%S", gmtime())
-    print("EndpointName={}".format(endpoint_name))
+#     endpoint_name = 'xgboost-realtime-ep' + strftime("%Y-%m-%d-%H-%M-%S", gmtime())
+#     print("EndpointName={}".format(endpoint_name))
 
-    create_endpoint_response = sm_client.create_endpoint(
-        EndpointName=endpoint_name,
-        EndpointConfigName=endpoint_config_name)
-    print(create_endpoint_response['EndpointArn'])
+#     create_endpoint_response = sm_client.create_endpoint(
+#         EndpointName=endpoint_name,
+#         EndpointConfigName=endpoint_config_name)
+#     print(create_endpoint_response['EndpointArn'])
 
-    # wait for endpoint to reach a terminal state (InService) using describe endpoint
-    import time
+#     # wait for endpoint to reach a terminal state (InService) using describe endpoint
+#     import time
 
-    describe_endpoint_response = sm_client.describe_endpoint(EndpointName=endpoint_name)
+#     describe_endpoint_response = sm_client.describe_endpoint(EndpointName=endpoint_name)
 
-    while describe_endpoint_response["EndpointStatus"] == "Creating":
-        describe_endpoint_response = sm_client.describe_endpoint(EndpointName=endpoint_name)
-        print(describe_endpoint_response["EndpointStatus"])
-        time.sleep(15)
+#     while describe_endpoint_response["EndpointStatus"] == "Creating":
+#         describe_endpoint_response = sm_client.describe_endpoint(EndpointName=endpoint_name)
+#         print(describe_endpoint_response["EndpointStatus"])
+#         time.sleep(15)
 
-    describe_endpoint_response
+#     describe_endpoint_response
+
+  
 
 
 if __name__ == "__main__":
