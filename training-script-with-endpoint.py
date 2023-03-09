@@ -37,10 +37,11 @@ def run_training():
     
     #adding the endpoint part 
     #endpoint config
+    sm_client = boto3.client("sagemaker")
     endpoint_config_name = 'xgboost-regression-epc' + strftime("%Y-%m-%d-%H-%M-%S", gmtime())
     instance_type = "ml.c4.2xlarge"
     print(endpoint_config_name)
-    create_endpoint_config_response = client.create_endpoint_config(
+    create_endpoint_config_response = sm_client.create_endpoint_config(
         EndpointConfigName = endpoint_config_name,
         ProductionVariants=[{
             'InstanceType': instance_type,
@@ -55,7 +56,7 @@ def run_training():
     endpoint_name = 'xgboost-realtime-ep' + strftime("%Y-%m-%d-%H-%M-%S", gmtime())
     print("EndpointName={}".format(endpoint_name))
 
-    create_endpoint_response = client.create_endpoint(
+    create_endpoint_response = sm_client.create_endpoint(
         EndpointName=endpoint_name,
         EndpointConfigName=endpoint_config_name)
     print(create_endpoint_response['EndpointArn'])
@@ -63,7 +64,7 @@ def run_training():
     # wait for endpoint to reach a terminal state (InService) using describe endpoint
     import time
 
-    describe_endpoint_response = client.describe_endpoint(EndpointName=endpoint_name)
+    describe_endpoint_response = sm_client.describe_endpoint(EndpointName=endpoint_name)
 
     while describe_endpoint_response["EndpointStatus"] == "Creating":
         describe_endpoint_response = client.describe_endpoint(EndpointName=endpoint_name)
