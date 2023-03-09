@@ -37,7 +37,7 @@ def run_training():
     
     #endpoint_name = 'logistic-reg-endpoint'
     endpoint_name = 'logistic-regression-epc' + strftime("%Y-%m-%d-%H-%M-%S", gmtime())
-    instance_type = 'ml.t2.medium'
+    instance_type = 'ml.c4.2xlarge'
 
     predictor = sklearn.deploy(
         initial_instance_count=1,
