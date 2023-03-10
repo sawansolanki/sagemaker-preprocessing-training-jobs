@@ -37,12 +37,24 @@ def run_training():
     
     #endpoint_name = 'logistic-reg-endpoint'
     endpoint_name = 'logistic-regression-epc' + strftime("%Y-%m-%d-%H-%M-%S", gmtime())
-    instance_type = 'ml.c4.2xlarge'
 
-    predictor = sklearn.deploy(
-        initial_instance_count=1,
-        instance_type=instance_type,
-        endpoint_name=endpoint_name
+    instance_type = 'ml.t2.medium'
+    instance_count = 1
+
+    # Create an endpoint configuration
+    sagemaker = boto3.client("sagemaker")
+    
+    response = sagemaker.create_endpoint_config(
+        EndpointConfigName=endpoint_config_name,
+        ProductionVariants=[
+            {
+                'VariantName': 'default',
+                'ModelName': endpoint_name,
+                'InitialInstanceCount': instance_count,
+                'InstanceType': instance_type,
+                'ModelPath': model_data_s3_uri
+            },
+        ]
     )
     
     
