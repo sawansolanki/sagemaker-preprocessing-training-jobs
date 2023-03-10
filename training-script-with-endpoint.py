@@ -36,6 +36,7 @@ def run_training():
     )
     
     #endpoint_name = 'logistic-reg-endpoint'
+    endpoint_config_name = 'xgboost-regression-epc' + strftime("%Y-%m-%d-%H-%M-%S", gmtime())
     endpoint_name = 'logistic-regression-epc' + strftime("%Y-%m-%d-%H-%M-%S", gmtime())
 
     instance_type = 'ml.t2.medium'
