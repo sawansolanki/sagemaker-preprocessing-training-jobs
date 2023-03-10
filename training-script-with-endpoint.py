@@ -47,13 +47,14 @@ def run_training():
     # Create an endpoint configuration
     #sgmaker = boto3.client("sagemaker")
     model = SKLearnModel(
+      entry_point="training.py",
       model_data=sklearn.model_data,
       role=role,
       framework_version="0.20.0"
     )
 
     
-    model.deploy(initial_instance_count=1, instance_type="ml.m4.xlarge", endpoint_name=endpoint_name)
+    model.deploy(initial_instance_count=1, instance_type="ml.t2.medium", endpoint_name=endpoint_name)
     
     
     #adding the endpoint part 
