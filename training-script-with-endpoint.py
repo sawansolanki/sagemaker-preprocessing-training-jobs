@@ -42,9 +42,9 @@ def run_training():
     instance_count = 1
 
     # Create an endpoint configuration
-    sagemaker = boto3.client("sagemaker")
+    sgmaker = boto3.client("sagemaker")
     
-    response = sagemaker.create_endpoint_config(
+    response = sgmaker.create_endpoint_config(
         EndpointConfigName=endpoint_config_name,
         ProductionVariants=[
             {
