@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 from sagemaker.sklearn.estimator import SKLearn
+from sagemaker.sklearn.model import SKLearnModel
 import sagemaker
 from sagemaker import get_execution_role
 from time import gmtime, strftime
