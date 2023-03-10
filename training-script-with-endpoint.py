@@ -54,7 +54,8 @@ def run_training():
     )
 
     
-    model.deploy(initial_instance_count=1, instance_type="ml.t2.medium", endpoint_name=endpoint_name)
+    #model.deploy(initial_instance_count=1, instance_type="ml.t2.medium", endpoint_name=endpoint_name)
+    sklearn.deploy(initial_instance_count=1, instance_type="ml.t2.medium", endpoint_name=endpoint_name)
     
     
     #adding the endpoint part 
