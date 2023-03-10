@@ -38,6 +38,7 @@ def run_training():
     #endpoint_name = 'logistic-reg-endpoint'
     endpoint_config_name = 'xgboost-regression-epc' + strftime("%Y-%m-%d-%H-%M-%S", gmtime())
     endpoint_name = 'logistic-regression-epc' + strftime("%Y-%m-%d-%H-%M-%S", gmtime())
+    model_path = 's3://sagemaker-us-east-1-256537223841/sagemaker-scikit-learn-2023-03-09-07-04-34-496/output/model.tar.gz'
 
     instance_type = 'ml.t2.medium'
     instance_count = 1
@@ -53,7 +54,7 @@ def run_training():
                 'ModelName': endpoint_name,
                 'InitialInstanceCount': instance_count,
                 'InstanceType': instance_type,
-                'ModelPath': model_data_s3_uri
+                'ModelPath': model_path
             },
         ]
     )
