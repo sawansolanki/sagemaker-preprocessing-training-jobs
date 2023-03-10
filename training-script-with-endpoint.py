@@ -59,7 +59,7 @@ def run_training():
             'InstanceType': instance_type,
             'InitialInstanceCount': 1,
             'InitialVariantWeight': 1,
-            'ModelName': endpoint_config_name,
+            'ModelName': model_path,
             'VariantName': 'AllTraffic'}])
     print("Endpoint Configuration Arn: " + create_endpoint_config_response["EndpointConfigArn"])
     
