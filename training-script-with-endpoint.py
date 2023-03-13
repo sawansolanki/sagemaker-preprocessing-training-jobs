@@ -35,7 +35,7 @@ local_file_path = os.path.join(os.getcwd(), filename)
 
 s3.Bucket(bucket_name).download_file(object_key, local_file_path)
 
-model_path = '/opt/ml/model/model.joblib'
+#model_path = '/opt/ml/model/model.joblib'
 
 
 joblib.load(local_file_path)
