@@ -34,9 +34,11 @@ filename = os.path.basename(object_key)
 local_file_path = os.path.join(os.getcwd(), filename)
 
 s3.Bucket(bucket_name).download_file(object_key, local_file_path)
-    
-def model_fn(local_file_path):
-   clf = joblib.load(local_file_path)
+
+model_path = '/opt/ml/model/model.joblib'
+
+def model_fn(model_path):
+   clf = joblib.load(model_path)
    return clf
 
 def run_training():    
@@ -59,7 +61,7 @@ def run_training():
     endpoint_config_name = 'xgboost-regression-epc' + strftime("%Y-%m-%d-%H-%M-%S", gmtime())
     endpoint_name = 'logistic-regression-epc' + strftime("%Y-%m-%d-%H-%M-%S", gmtime())
     
-    model_fn(local_file_path)
+    model_fn(model_path)
 
     instance_type = 'ml.t2.medium'
     instance_count = 1
