@@ -27,9 +27,9 @@ model_path = 's3://sagemaker-us-east-1-256537223841/sagemaker-scikit-learn-2023-
 s3 = boto3.client('s3')
 bucket_name = 'sagemaker-us-east-1-256537223841'
 object_key = 'sagemaker-scikit-learn-2023-03-09-07-04-34-496/output/model.joblib'
+local_file_path = 'model.joblib'
 
-# Download the model file from S3
-s3.download_file(bucket_name, object_key)
+s3.Bucket(bucket_name).download_file(object_key, local_file_path)
     
 def model_fn():
    clf = joblib.load("model.joblib")
