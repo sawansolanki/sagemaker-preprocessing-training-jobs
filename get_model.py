@@ -1,6 +1,7 @@
 import os
 import boto3
 import botocore
+import sklearn
 import joblib
 s3 = boto3.resource('s3')
 
