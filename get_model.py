@@ -1,7 +1,7 @@
 import os
 import boto3
 import botocore
-
+import joblib
 s3 = boto3.resource('s3')
 
 bucket_name = 'sagemaker-us-east-1-256537223841'
@@ -15,6 +15,7 @@ local_file_path = os.path.join(os.getcwd(), filename)
 
 try:
     s3.Bucket(bucket_name).download_file(object_key, local_file_path)
+    joblib.load(local_file_path)
     print(f'Successfully downloaded file from S3 bucket {bucket_name} at object key {object_key} to {local_file_path}')
 except botocore.exceptions.ClientError as e:
     if e.response['Error']['Code'] == "404":
