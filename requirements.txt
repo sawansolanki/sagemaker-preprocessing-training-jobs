@@ -2,6 +2,6 @@ boto3
 pandas
 numpy==1.22.0
 sagemaker
-scikit_learn==0.22.2.post1
+scikit-learn==1.0.2
 scipy
 joblib
