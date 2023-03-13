@@ -3,4 +3,5 @@ pandas
 sagemaker
 scikit-learn
 scipy
+joblib
 sklearn
