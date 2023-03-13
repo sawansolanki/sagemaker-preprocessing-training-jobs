@@ -29,7 +29,7 @@ bucket_name = 'sagemaker-us-east-1-256537223841'
 object_key = 'sagemaker-scikit-learn-2023-03-09-07-04-34-496/output/model.joblib'
 local_file_path = 'model.joblib'
 
-s3.Bucket(bucket_name).download_file(object_key, local_file_path)
+s3.bucket(bucket_name).download_file(object_key, local_file_path)
     
 def model_fn():
    clf = joblib.load("model.joblib")
