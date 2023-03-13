@@ -3,6 +3,7 @@ import boto3
 import botocore
 import sklearn
 import joblib
+import numpy
 s3 = boto3.resource('s3')
 
 bucket_name = 'sagemaker-us-east-1-256537223841'
