@@ -6,6 +6,7 @@ from sagemaker import get_execution_role
 from time import gmtime, strftime
 import boto3
 import joblib
+import os
 
 print("***---------")
 
