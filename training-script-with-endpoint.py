@@ -6,6 +6,8 @@ from sagemaker import get_execution_role
 from time import gmtime, strftime
 import boto3
 
+print("***---------")
+
 #role = get_execution_role()
 role='arn:aws:iam::256537223841:role/service-role/AmazonSageMaker-ExecutionRole-20221027T104692'
 
