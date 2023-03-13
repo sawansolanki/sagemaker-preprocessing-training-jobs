@@ -23,9 +23,16 @@ preprocessed_training_data = output["S3Output"]["S3Uri"]
 preprocessed_test_data = output["S3Output"]["S3Uri"]
 
 model_path = 's3://sagemaker-us-east-1-256537223841/sagemaker-scikit-learn-2023-03-09-07-04-34-496/output/model.joblib'
+
+s3 = boto3.client('s3')
+bucket_name = 'sagemaker-us-east-1-256537223841'
+object_key = 'sagemaker-scikit-learn-2023-03-09-07-04-34-496/output/model.joblib'
+
+# Download the model file from S3
+s3.download_file(bucket_name, object_key)
     
-def model_fn(model_path):
-   clf = joblib.load(model_path)
+def model_fn():
+   clf = joblib.load("model.joblib")
    return clf
 
 def run_training():    
@@ -48,7 +55,7 @@ def run_training():
     endpoint_config_name = 'xgboost-regression-epc' + strftime("%Y-%m-%d-%H-%M-%S", gmtime())
     endpoint_name = 'logistic-regression-epc' + strftime("%Y-%m-%d-%H-%M-%S", gmtime())
     
-    model_fn(model_path)
+    model_fn()
 
     instance_type = 'ml.t2.medium'
     instance_count = 1
