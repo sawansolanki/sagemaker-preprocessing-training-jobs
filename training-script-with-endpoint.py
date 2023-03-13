@@ -21,6 +21,11 @@ output = {'OutputName': 'test_data',
 preprocessed_training_data = output["S3Output"]["S3Uri"]
 preprocessed_test_data = output["S3Output"]["S3Uri"]
 
+# model_path = 's3://sagemaker-us-east-1-256537223841/sagemaker-scikit-learn-2023-03-09-07-04-34-496/output/model.joblib'
+    
+# def model_fn(model_path):
+#    clf = joblib.load(model_path)
+#    return clf
 
 def run_training():    
  
@@ -35,13 +40,13 @@ def run_training():
     model_data_s3_uri = "{}{}/{}".format(
         training_job_description["OutputDataConfig"]["S3OutputPath"],
         training_job_description["TrainingJobName"],
-        "output/model.tar.gz",
+        "output/model.joblib",
     )
     
     #endpoint_name = 'logistic-reg-endpoint'
     endpoint_config_name = 'xgboost-regression-epc' + strftime("%Y-%m-%d-%H-%M-%S", gmtime())
     endpoint_name = 'logistic-regression-epc' + strftime("%Y-%m-%d-%H-%M-%S", gmtime())
-    model_path = 's3://sagemaker-us-east-1-256537223841/sagemaker-scikit-learn-2023-03-09-07-04-34-496/output/model.tar.gz'
+    
 
     instance_type = 'ml.t2.medium'
     instance_count = 1
