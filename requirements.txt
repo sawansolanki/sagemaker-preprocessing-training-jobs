@@ -1,7 +1,7 @@
 boto3
 pandas
 sagemaker
-scikit-learn
+scikit_learn==0.22.2.post1
 scipy
 joblib
-sklearn
+
